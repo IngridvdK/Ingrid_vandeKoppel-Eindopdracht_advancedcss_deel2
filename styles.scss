@@ -1,0 +1,137 @@
+@mixin size {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+* { 
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;    
+}
+body {
+    background-color: #c3cfe2;
+}
+.container {
+    max-width: 1024px;
+    margin: 0px auto; 
+    padding: 30px;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-gap: 30px;
+    &__item--1 {
+        grid-area: 1/1/4/4;
+    }
+    &__item--2 {
+        grid-area: 1/4/4/7;
+    }
+    &__item--3 {
+        grid-area: 1/7/4/10;
+    }
+    &__item--4 {
+        grid-area: 4/1/7/4;
+    }
+    &__item--5 {
+        grid-area: 4/4/7/7;
+    }
+    &__item--6 {
+        grid-area: 4/7/7/10;
+    }
+    &__item--7 {
+        grid-area: 7/1/10/4;
+    }
+    &__img {
+        @include size();
+        transition: 0.1s ease;
+    }
+    &__background {
+        background-color: hotpink;
+        @include size();
+        position: relative;
+        top: -101%;
+        z-index: -1;
+        opacity: 0;
+    }
+    &__button {
+        position: relative;
+        top: -150%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        transition: 0.1s ease;
+        opacity: 0;
+        }
+    &__item--1:hover .gallery__img, &__item--2:hover .gallery__img, &__item--3:hover .gallery__img, &__item--4:hover .gallery__img, &__item--5:hover .gallery__img, &__item--6:hover .gallery__img, &__item--7:hover .gallery__img {
+        opacity: 0;
+        transform: scale(-0.2);
+        }
+    &__item--1:hover .gallery__background, &__item--2:hover .gallery__background, &__item--3:hover .gallery__background, &__item--4:hover .gallery__background, &__item--5:hover .gallery__background, &__item--6:hover .gallery__background, &__item--7:hover .gallery__background {
+        opacity: 1;
+    }
+    &__item--1:hover .gallery__button, &__item--2:hover .gallery__button, &__item--3:hover .gallery__button, &__item--4:hover .gallery__button, &__item--5:hover .gallery__button, &__item--6:hover .gallery__button, &__item--7:hover .gallery__button {
+        opacity: 1;
+    }  
+}
+
+@media (max-width: 800px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 30px;
+        &__item--1 {
+            grid-area: 1/1/2/2;
+        }
+        &__item--2 {
+            grid-area: 1/2/2/3;
+        }
+        &__item--3 {
+            grid-area: 2/1/3/2;
+        }
+        &__item--4 {
+            grid-area: 2/2/3/3;
+        }
+        &__item--5 {
+            grid-area: 3/1/4/2;
+        }
+        &__item--6 {
+            grid-area: 3/2/4/3;
+        }
+        &__item--7 {
+            grid-area: 4/1/5/2;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        grid-gap: 30px;
+        &__item--1 {
+            grid-area: 1/1/2/2;
+            }
+        &__item--2 {
+            grid-area: 2/1/3/2;
+        }
+        &__item--3 {
+            grid-area: 3/1/4/2;
+        }
+        &__item--4 {
+            grid-area: 4/1/5/2;
+        }
+        &__item--5 {
+            grid-area: 5/1/6/2;
+        }
+        &__item--6 {
+            grid-area: 6/1/7/2;
+        }
+        &__item--7 {
+            grid-area: 7/1/8/2;
+        }
+    }
+}
